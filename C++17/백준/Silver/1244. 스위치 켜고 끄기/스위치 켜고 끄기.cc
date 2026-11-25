@@ -22,22 +22,25 @@ int main()
 
         if (gender == 1) 
         {
-            for (int i = num; i <= n; i += num)
+            for (int j = 1; j <= n; j++)
             {
-                sw[i] = 1 - sw[i];
+                if (j % num == 0) 
+                {
+                    sw[j] = !sw[j];
+                }
             }
         }
         else 
         {
-            sw[num] = 1 - sw[num]; 
+            sw[num] = !sw[num]; 
 
             int d = 1; 
             while (num - d >= 1 && num + d <= n) 
             {
                 if (sw[num - d] == sw[num + d])
                 {
-                    sw[num - d] = 1 - sw[num - d];
-                    sw[num + d] = 1 - sw[num + d];
+                    sw[num - d] = !sw[num - d];
+                    sw[num + d] = !sw[num + d];
                     d++; 
                 }
                 else
