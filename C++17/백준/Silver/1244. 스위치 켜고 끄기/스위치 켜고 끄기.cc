@@ -6,8 +6,8 @@ int main()
     scanf("%d", &n);
 
     int sw[101];
-    
-    for (int i = 1; i <= n; i++)
+
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &sw[i]);
     }
@@ -20,41 +20,42 @@ int main()
         int gender, num;
         scanf("%d %d", &gender, &num);
 
-        if (gender == 1) 
+        if (gender == 1)
         {
-            for (int j = 1; j <= n; j++)
+            for (int j = 0; j < n; j++)
             {
-                if (j % num == 0) 
+                if ((j + 1) % num == 0)
                 {
                     sw[j] = !sw[j];
                 }
             }
         }
-        else 
+        else
         {
-            sw[num] = !sw[num]; 
+            int center = num - 1;
+            sw[center] = !sw[center];
 
-            int d = 1; 
-            while (num - d >= 1 && num + d <= n) 
+            int d = 1;
+            while (center - d >= 0 && center + d < n)
             {
-                if (sw[num - d] == sw[num + d])
+                if (sw[center - d] == sw[center + d])
                 {
-                    sw[num - d] = !sw[num - d];
-                    sw[num + d] = !sw[num + d];
-                    d++; 
+                    sw[center - d] = !sw[center - d];
+                    sw[center + d] = !sw[center + d];
+                    d++;
                 }
                 else
                 {
-                    break; 
+                    break;
                 }
             }
         }
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
         printf("%d ", sw[i]);
-        if (i % 20 == 0)
+        if ((i + 1) % 20 == 0)
         {
             printf("\n");
         }
